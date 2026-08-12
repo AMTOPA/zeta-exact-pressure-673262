@@ -1,5 +1,7 @@
 # A 67.3262375585% lower bound for simple zeros of the Riemann zeta function
 
+> **Repository description.** Exact pressure-multiplicity refinement of the positioned-pressure method, giving a research-draft lower bound of **67.3262375585%** for simple zeros of the Riemann zeta function on the critical line, conditional only on the same imported analytic interface and certified seven-point inputs used by the predecessor repository.
+
 This repository records a short refinement of the block-averaging deduction in
 [`sxuff/zeta-positioned-pressure`](https://github.com/sxuff/zeta-positioned-pressure).
 
