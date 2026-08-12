@@ -57,7 +57,7 @@ Under these imported inputs, the refinement below gives
 
 ---
 
-## 1. Exact local pressure inside an \(m\)-block
+## 1. Exact local pressure inside an m-point block
 
 Consider $m$ consecutive simple zeros with normalized gaps
 $g_1,\ldots,g_{m-1}$.
@@ -304,8 +304,7 @@ The following are **not** reproved here:
 
 - the analytic interface involving $H_{\mathrm{cert}}$ and
   $\mathrm{tr}\,\Psi(M)$;
-- the seven-point interval certificate
-  $F\ge 51063/10^7$;
+- the seven-point interval certificate $F\ge 51063/10^7$;
 - the finite-dimensional profile $h_m$;
 - the spectral pinching and normalized total-gap relation used in the block
   average.
