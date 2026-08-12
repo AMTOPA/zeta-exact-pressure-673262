@@ -2,17 +2,31 @@
   "description": "Exact shifted-block pressure multiplicity refinement.",
   "status": "research draft; imported analytic and local-certificate inputs",
   "upstream": "https://github.com/sxuff/zeta-positioned-pressure",
+  "points": 7,
+  "gaps_per_local_window": 6,
   "target": {
     "numerator": 51063,
     "denominator": 10000000
   },
   "position_pressure": {
-    "total": "3/1150"
+    "denominator": 2300000000,
+    "numerators": [831522, 1096590, 1071888, 1071888, 1096590, 831522],
+    "total": {
+      "numerator": 3,
+      "denominator": 1150
+    }
   },
-  "analytic_h_cert": "672457041414544284/10^18",
+  "analytic_h_cert": {
+    "numerator": 672457041414544284,
+    "denominator": 1000000000000000000
+  },
   "new_deduction": {
+    "pressure_shift_factor": "m-6 instead of m-1",
     "block_length": 215,
-    "safe_lower": "6732623755/10^10",
-    "computed_bound": "0.673262375584978050386191646193095784..."
+    "safe_published_lower": {
+      "numerator": 6732623755,
+      "denominator": 10000000000
+    },
+    "computed_bound": "0.67326237558497805038619164619309578448526437566885..."
   }
 }

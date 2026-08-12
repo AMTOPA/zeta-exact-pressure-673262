@@ -1,0 +1,7 @@
+m=215
+B=3/1150
+sum_c=627/1150
+(m-q)B=627/1150
+identity_verified=True
+shift_total_per_global_gap=627/1150
+shift_average_per_global_gap=627/247250
