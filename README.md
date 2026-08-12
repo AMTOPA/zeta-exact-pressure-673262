@@ -21,8 +21,9 @@ That is **67.3262375585%**.
 > interval certificate are imported from prior work and are not reverified in
 > this repository.
 
-[Proof](proof.md) · [Lineage](docs/lineage.md) ·
-[Exact parameters](candidate.json) · [Checks](src/)
+**Formal manuscript:** [PDF](paper/main.pdf) · [LaTeX source](paper/main.tex) · [Proof notes](proof.md)
+
+[Lineage](docs/lineage.md) · [Exact parameters](candidate.json) · [Checks](src/)
 
 ## Where this sits
 
