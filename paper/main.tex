@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\liminfT}{\liminf_{T\to\infty}}
+
+\title{An Exact Pressure-Multiplicity Refinement for Simple Zeros of the Riemann Zeta Function}
+\author{AMTOPA and contributors}
+\date{August 12, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We record a short combinatorial refinement of the shifted-block averaging step in the positioned-pressure certificate of \texttt{sxuff/zeta-positioned-pressure}. Subject to the same imported analytic interface, the same certified seven-point inequality, and the same finite-dimensional Gram-profile estimate, the refinement replaces the coarse global pressure factor $m-1$ by the exact factor $m-6$. With the certified parameters of the predecessor, the resulting numerical lower bound is
+\[
+\liminfT \frac{N_0^s(T,2T)}{N(T,2T)}
+\ge 0.673262375584978050386\ldots,
+\]
+so in particular it exceeds $0.6732623755$. This is a same-day research draft, not a peer-reviewed theorem and not a proof of the Riemann hypothesis.
+\end{abstract}
+
+\section{Statement and trust boundary}
+
+Let $N(T,2T)$ denote the number of nontrivial zeros of $\zeta$ with ordinates in $(T,2T]$, counted with multiplicity, and let $N_0^s(T,2T)$ denote the number of simple zeros on the critical line in the same range. Write
+\[
+S=N_0^s(T,2T),\qquad N=N(T,2T).
+\]
+
+We import the analytic interface
+\begin{equation}\label{eq:interface}
+S\ge H_{\rm cert}N+\tr\Psi(M)-o(N),
+\end{equation}
+with
+\[
+H_{\rm cert}=\frac{672457041414544284}{10^{18}},
+\]
+and the certified seven-point inequality of the predecessor with
+\[
+\eps=\frac{51063}{10^7},\qquad b_r\ge 0,\qquad B:=\sum_{r=1}^6 b_r=\frac3{1150}.
+\]
+We also import the finite-dimensional block estimate
+\begin{equation}\label{eq:hm-input}
+\tr\Psi(G)\ge h_m(E),
+\end{equation}
+where
+\[
+h_m(E)=
+\begin{cases}
+E, & 0\le E\le \dfrac{m}{m-1},\\[1.2ex]
+\dfrac{E}{m}+2\sqrt{\dfrac{m-1}{m}E}-1,
+& E\ge \dfrac{m}{m-1}.
+\end{cases}
+\]
+These inputs are not reproved here.
+
+\begin{theorem}\label{thm:main}
+Subject to the imported inputs above and the same normalization used in the predecessor's shifted-block argument,
+\[
+\liminfT \frac{N_0^s(T,2T)}{N(T,2T)}
+\ge 0.673262375584978050386\ldots
+>\frac{6732623755}{10^{10}}.
+\]
+\end{theorem}
+
+\section{Exact local pressure multiplicity}
+
+Consider a block of $m$ consecutive simple zeros, with normalized gaps
+\[
+g_1,\ldots,g_{m-1}.
+\]
+For each seven-point window starting at $t\in\{0,\ldots,m-7\}$, the local pressure contribution is
+\[
+\sum_{r=1}^{6} b_r g_{t+r}.
+\]
+After summing all $m-6$ local inequalities, define
+\begin{equation}\label{eq:cj}
+c_j:=\sum_{\substack{0\le t\le m-7\\1\le j-t\le 6}} b_{j-t},
+\qquad
+P_B:=\sum_{j=1}^{m-1}c_jg_j.
+\end{equation}
+The pair terms are handled exactly as in the predecessor, so with $E_B$ denoting the corresponding block off-diagonal energy,
+\begin{equation}\label{eq:local-energy}
+E_B+P_B\ge A_m,
+\qquad
+A_m:=\eps(m-6).
+\end{equation}
+
+\begin{lemma}[Exact pressure multiplicity]\label{lem:pressure}
+The coefficients in \eqref{eq:cj} satisfy
+\[
+\sum_{j=1}^{m-1}c_j=(m-6)B.
+\]
+\end{lemma}
+
+\begin{proof}
+This is a direct double count of pairs consisting of a seven-point window and one of its six internal gap positions:
+\begin{align*}
+\sum_{j=1}^{m-1}c_j
+&=\sum_{j=1}^{m-1}
+  \sum_{\substack{0\le t\le m-7\\1\le j-t\le6}}b_{j-t}\\
+&=\sum_{t=0}^{m-7}\sum_{r=1}^{6}b_r\\
+&=(m-6)B.
+\end{align*}
+\end{proof}
+
+\section{Retaining the exact pressure through the defect estimate}
+
+Set
+\[
+R_m:=h_m(A_m),\qquad \eta_m:=\frac{R_m}{A_m}.
+\]
+Because $h_m$ is increasing and concave with $h_m(0)=0$, one has
+\begin{equation}\label{eq:chord}
+h_m(E)\ge \eta_m E\qquad(0\le E\le A_m).
+\end{equation}
+
+If $E_B\ge A_m$, monotonicity and \eqref{eq:hm-input} give
+\[
+\tr\Psi(G_B)\ge R_m-o(1).
+\]
+If $E_B<A_m$, then \eqref{eq:local-energy} gives $P_B\ge A_m-E_B$, and therefore by \eqref{eq:chord},
+\begin{align*}
+\tr\Psi(G_B)+\eta_mP_B
+&\ge \eta_mE_B+\eta_m(A_m-E_B)-o(1)\\
+&=R_m-o(1).
+\end{align*}
+Thus in all cases
+\begin{equation}\label{eq:block}
+\tr\Psi(G_B)+\eta_mP_B\ge R_m-o(1).
+\end{equation}
+The key point is that $P_B$ is retained in its exact position-dependent form; it is not replaced at this stage by the coarser $B\,\operatorname{span}(B)$.
+
+\section{Shifted-block averaging}
+
+Partition the ordered simple zeros into disjoint blocks of $m$ consecutive points, and consider all $m$ residue-class shifts of this partition. Up to $O(m)$ endpoint effects, a fixed global gap has the following behavior across the $m$ shifts:
+\begin{enumerate}[label=(\roman*)]
+\item it is a block boundary exactly once;
+\item it occupies each internal position $j=1,\ldots,m-1$ exactly once.
+\end{enumerate}
+Consequently, by Lemma~\ref{lem:pressure}, its total pressure coefficient over all shifted partitions is exactly
+\begin{equation}\label{eq:shift-multiplicity}
+\sum_{j=1}^{m-1}c_j=(m-6)B.
+\end{equation}
+Averaging \eqref{eq:block} over the shifted partitions, using spectral pinching for the block defects and the same normalized total-gap relation as in the predecessor, gives
+\begin{equation}\label{eq:global-defect}
+\tr\Psi(M)
+\ge \frac{R_m}{m}S
+-\eta_mB\frac{m-6}{m}N
+-o(N).
+\end{equation}
+For comparison, replacing each $c_j$ by the uniform upper bound $B$ before the shifted average yields the larger factor $B(m-1)/m$.
+
+\section{Assembly and numerical specialization}
+
+Substituting \eqref{eq:global-defect} into \eqref{eq:interface} gives
+\[
+S\ge H_{\rm cert}N+\frac{R_m}{m}S
+-\eta_mB\frac{m-6}{m}N-o(N),
+\]
+and hence
+\begin{equation}\label{eq:master}
+\frac SN
+\ge
+\frac{mH_{\rm cert}-\eta_mB(m-6)}{m-R_m}-o(1).
+\end{equation}
+Since $A_m=\eps(m-6)$,
+\[
+\eta_mB(m-6)=\frac{R_mB}{\eps},
+\]
+so \eqref{eq:master} may also be written
+\[
+\frac SN
+\ge
+\frac{mH_{\rm cert}-R_mB/\eps}{m-R_m}-o(1).
+\]
+
+A high-precision scan of integer block lengths selects
+\[
+m=215.
+\]
+Then
+\[
+A_{215}=\frac{51063}{10^7}\cdot209=1.0672167,
+\]
+and
+\[
+R_{215}=1.06627687661618780546392584286702014367\ldots.
+\]
+Substitution into \eqref{eq:master} yields
+\[
+\frac SN
+\ge
+0.67326237558497805038619164619309578448\ldots-o(1).
+\]
+This proves Theorem~\ref{thm:main}, subject to the imported inputs.
+
+\section{Reproducibility}
+
+The repository contains two independent executable checks:
+\begin{itemize}
+\item \texttt{src/check\_multiplicity.py}, which verifies the exact rational identity in Lemma~\ref{lem:pressure} from the published pressure coefficients;
+\item \texttt{src/check\_final\_bound.py}, which scans the block length and then recomputes the final bound with 100-digit interval arithmetic.
+\end{itemize}
+The GitHub Actions workflow runs both checks on every push and pull request.
+
+\section{Research status and attribution}
+
+This note contributes only the exact pressure-multiplicity retention through shifted-block averaging and the resulting arithmetic refinement. The analytic interface, the local seven-point interval certificate, the re-optimized window, and the sharp finite-$m$ block profile are inherited from the Anthropic / \texttt{trmdy} / \texttt{sxuff} lineage. If any imported input fails, the numerical bound in this note fails with it.
+
+This manuscript should receive independent mathematical review before being cited as an established theorem.
+
+\begin{thebibliography}{9}
+\bibitem{sxuff}
+\texttt{sxuff/zeta-positioned-pressure},
+\url{https://github.com/sxuff/zeta-positioned-pressure}.
+
+\bibitem{trmdy}
+\texttt{trmdy/zeta-simple-zeros-673137},
+\url{https://github.com/trmdy/zeta-simple-zeros-673137}.
+
+\bibitem{anthropic}
+Anthropic, research artifacts on simple zeros of the Riemann zeta function, 2026.
+\end{thebibliography}
+
+\end{document}
